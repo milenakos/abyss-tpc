@@ -3,7 +3,7 @@ Abyss is a proxy Hack for The Puzzle Cell, its like middle-man between you and s
 
 # How To
 ## Run
-Grab latest stable from releases and run it, enter IP of destination server and connect to `localhost:6969` in your TPC.
+Grab latest stable from [releases](https://github.com/milena-kos/abyss-tpc/releases/) and run it, enter IP of destination server and connect to `localhost:6969` in your TPC.
 
 ## Build
 - Install dependencies using `pip install -r requirements.txt`
