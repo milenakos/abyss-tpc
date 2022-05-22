@@ -17,13 +17,13 @@ Grab latest stable from [releases](https://github.com/milena-kos/abyss-tpc/relea
 Prevents you from sending some forbidden packets
 
 ## Invisibility
-Hides your cursor
+Hides your cursor for everyone
 
 ## Multiplayern't
-Hides everyone's cursors
+Hides everyone's cursors for everyone
 
 ## Cleaner
-Will replace all incoming cells with void (aka forcing erase mode for everyone)
+Will replace all incoming cells with void for everyone (aka forcing erase mode for everyone)
 
 ## Force Sandbox Mode
 Switches you to sandbox mode while level mode is active
@@ -32,10 +32,10 @@ Switches you to sandbox mode while level mode is active
 Prints all sent and recieved packets
 
 ## Show Yourself
-Allows you to see your own cursor
+Allows you to see your own cursor (only you can see second cursor)
 
 ## Hover Flex
-Shows your last placed cell as a hover on your cursor
+Shows your last placed cell as a hover on your cursor (for everyone except you)
 
 # More hacks
 Feel free to suggest more!
