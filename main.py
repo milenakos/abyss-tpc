@@ -68,7 +68,8 @@ def is_hack(value):
         return hacks_enabled[value]
 
 async def serverToClient(remote, localclient):
-    global hacks_enabled, client_id, cellid, exiting
+    global hacks_enabled, client_id, cellid, exiting, hovering_name
+    hovering_name = ""
     async for message in localclient:
         if exiting:
             await remote.close()
@@ -91,7 +92,11 @@ async def serverToClient(remote, localclient):
             new_message = f"new-hover {client_id} {x} {y} {cellid} 0"
             await remote.send(new_message)
             
-            new_message = f"set-cursor ItWorkedButYouCantSeeIt {x} {y}"
+            hovering_name_temp = "YouAreHolding" + cellid[0].upper() + cellid[1:]
+            if hovering_name != hovering_name_temp:
+                await localclient.send(f"set-cursor {hovering_name} 69420.87006875000003 69420.13745000000001")
+            hovering_name = hovering_name_temp
+            new_message = f"set-cursor {hovering_name} {x} {y}"
             await localclient.send(new_message)
         if is_hack(1) and (message.startswith("edtype") or message.startswith("remove-cursor")):
             do_send = False
@@ -102,7 +107,7 @@ async def serverToClient(remote, localclient):
     raise KeyboardInterrupt
 
 async def clientToServer(remote, localclient):
-    global client_id, deinit_yourself, deinit_yourself_2
+    global client_id, deinit_yourself, deinit_yourself_2, hovering_name
     async for message in remote:
         if deinit_yourself and message.startswith("set-cursor") and message.split(" ")[1] == client_id:
             deinit_yourself = False
@@ -112,7 +117,7 @@ async def clientToServer(remote, localclient):
         if deinit_yourself_2 and message.startswith("set-cursor") and message.split(" ")[1] == client_id:
             deinit_yourself_2 = False
             name = message.split(" ")[1] + "_"
-            new_message = "set-cursor ItWorkedButYouCantSeeIt 69420.87006875000003 69420.13745000000001"
+            new_message = f"set-cursor {hovering_name} 69420.87006875000003 69420.13745000000001"
             await localclient.send(new_message)
             new_message = "drop-hover " + client_id
             await remote.send(new_message)
