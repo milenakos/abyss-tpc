@@ -29,6 +29,15 @@ def toggler(hacks_enabled):
                     prefixes[i] = colorama.Fore.RED + str(i) + ". "
             except:
                 prefixes[i] = colorama.Fore.RED + str(i) + ". "
+        
+        # hello!
+        # planned hacks:
+        # pretender
+        # anonymous
+        # party mode
+        # illegal cells
+        # packets overflower
+        # maybe some utf-8 stuff which may break something to our advantage?
         print("\n\n\n\n\n\n")
         print(prefixes[1] + "Nerf Anti-Cheat - prevents you from sending some forbidden packets") # done
         print(prefixes[2] + "Invisibility - hides your cursor") # done
