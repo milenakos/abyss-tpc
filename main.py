@@ -21,7 +21,7 @@ def toggler(hacks_enabled):
     colorama.init(autoreset=True)
     while True:
         prefixes = {}
-        for i in range(1, 9):
+        for i in range(1, 10):
             try:
                 if hacks_enabled[i]:
                     prefixes[i] = colorama.Fore.GREEN + str(i) + ". "
@@ -38,6 +38,7 @@ def toggler(hacks_enabled):
         print(prefixes[6] + "Printer - prints all sent and recieved packets") # done
         print(prefixes[7] + "Show Yourself - allows you to see your own cursor") # done
         print(prefixes[8] + "Hover Flex - shows your last placed cell as a hover on your cursor") # done
+        print(prefixes[9] + "No Wrap - stops all wrap packets from both sides (aka your wrap mode becomes fully local)") # done
         print('"exit" to exit')
         
         try:
@@ -100,6 +101,10 @@ async def serverToClient(remote, localclient):
             await localclient.send(new_message)
         if is_hack(1) and (message.startswith("edtype") or message.startswith("remove-cursor")):
             do_send = False
+        if is_hack(9) and message.startswith("wrap"):
+            do_send = False
+            await localclient.send("wrap") # apperantly i need to send it back to myself
+        
         if do_send:
             if is_hack(6):
                 print("> " + message)
@@ -142,6 +147,8 @@ async def clientToServer(remote, localclient):
             y = message.split(" ")[3]
             new_message = f"set-cursor {name} {x} {y}"
             await localclient.send(new_message)
+        if is_hack(9) and message.startswith("wrap"):
+            continue # wow very complicated hack
             
         if is_hack(6):
             print("< " + message)

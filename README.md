@@ -37,5 +37,8 @@ Allows you to see your own cursor (only you can see second cursor)
 ## Hover Flex
 Shows your last placed cell as a hover on your cursor (for everyone except you)
 
+## No Wrap
+Stops all wrap packets from both sides (aka your wrap mode becomes fully local)
+
 # More hacks
 Feel free to suggest more!
